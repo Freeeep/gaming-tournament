@@ -115,3 +115,25 @@ All endpoints prefixed with `/api/`:
 - Tournament state machine: Draft → Open → In Progress → Completed
 - Single elimination bracket generation (MVP), with double elimination and round-robin planned for later
 - Organizer-only actions protected by authorization checks
+- Schema pattern: Base/Create/Update/Response (use Base only when Create and Response share fields)
+- Always use UTC for JWT token expiration
+
+## Implementation Status
+
+### Complete
+- Database configuration (`core/database.py`)
+- All SQLAlchemy models (`models/`)
+- All Pydantic schemas (`schemas/`)
+- Security utilities - password hashing, JWT creation (`utils/security.py`)
+- FastAPI entry point (`main.py`)
+
+### In Progress
+- Auth dependencies (`utils/deps.py`) - next step
+
+### Pending
+- Auth router (register/login endpoints)
+- User router
+- Tournament router
+- Participant router
+- Match router
+- Frontend (not started)
