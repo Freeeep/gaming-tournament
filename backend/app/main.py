@@ -2,6 +2,7 @@ from fastapi import FastAPI
 
 from app.core.database import engine, Base
 from app.models import User, Tournament, Participant, Match
+from app.routers.auth import router as auth_router
 
 Base.metadata.create_all(bind = engine)
 
@@ -18,3 +19,5 @@ def root():
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
+
+app.include_router(auth_router, prefix="/api")

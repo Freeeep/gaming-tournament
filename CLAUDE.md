@@ -126,13 +126,13 @@ All endpoints prefixed with `/api/`:
 - All Pydantic schemas (`schemas/`)
 - Security utilities - password hashing, JWT creation (`utils/security.py`)
 - FastAPI entry point (`main.py`)
+- Auth dependencies (`utils/deps.py`) - get_current_user, OAuth2 scheme
+- Auth router (`routers/auth.py`) - register and login endpoints working
 
 ### In Progress
-- Auth dependencies (`utils/deps.py`) - next step
+- User router - next step
 
 ### Pending
-- Auth router (register/login endpoints)
-- User router
 - Tournament router
 - Participant router
 - Match router

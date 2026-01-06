@@ -1,5 +1,34 @@
 # Progress Log
 
+## 06/Jan/2026 (Session 2)
+
+### Accomplished
+- Created `backend/app/utils/deps.py` - auth dependencies with `get_current_user` function
+  - OAuth2PasswordBearer scheme for extracting JWT from headers
+  - Token decoding and validation with error handling
+  - Database lookup to return current user
+- Created `backend/app/schemas/auth.py` - AuthLogin & AuthResponse schemas
+- Created `backend/app/routers/auth.py` - register and login endpoints
+  - Register: validates email uniqueness, hashes password, creates user
+  - Login: verifies password, returns JWT token
+- Updated `backend/app/main.py` - wired up auth router with `/api` prefix
+- Fixed typo in `backend/app/schemas/user.py` - `avatur_url` → `avatar_url`
+- Fixed bcrypt version compatibility issue - pinned to 4.0.1 in requirements.txt
+- Successfully tested registration and login endpoints via curl
+
+### Notes
+- Learned JWT auth flow: password check happens at login, token proves identity after
+- `jwt.decode()` does the signature comparison internally using SECRET_KEY
+- "Bearer" token type tells clients how to send the token in Authorization header
+- bcrypt 4.1+ has compatibility issues with passlib - use 4.0.1
+
+### Tomorrow
+- Create User router (`GET/PATCH /api/users/me` - view/update profile)
+- Create Tournament router (create and list tournaments)
+- Test `get_current_user` dependency with a protected route
+
+---
+
 ## 06/Jan/2026
 
 ### Accomplished

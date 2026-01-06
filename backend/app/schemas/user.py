@@ -20,7 +20,7 @@ class UserUpdate(BaseModel):
 #Schema for returning a user (what the server sends back)
 class UserResponse(UserBase):
     id: int
-    avatur_url: Optional[str] = None
+    avatar_url: Optional[str] = None
     bio: Optional[str] = None
     created_at: datetime
 
