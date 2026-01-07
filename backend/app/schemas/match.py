@@ -10,6 +10,8 @@ class MatchUpdate(BaseModel):
     completed_at: Optional[datetime] = None
     player1_score: Optional[int] = None
     player2_score: Optional[int] = None
+    player1_id: Optional[int] = None
+    player2_id: Optional[int] = None
     winner_id: Optional[int] = None
 
 class MatchResponse(BaseModel):

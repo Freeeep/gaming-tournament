@@ -127,13 +127,12 @@ All endpoints prefixed with `/api/`:
 - Security utilities - password hashing, JWT creation (`utils/security.py`)
 - FastAPI entry point (`main.py`)
 - Auth dependencies (`utils/deps.py`) - get_current_user, OAuth2 scheme
-- Auth router (`routers/auth.py`) - register and login endpoints working
-
-### In Progress
-- User router - next step
+- Auth router (`routers/auth.py`) - register, login (OAuth2 compatible)
+- User router (`routers/user.py`) - get/update profile, public profiles
+- Tournament router (`routers/tournament.py`) - CRUD, join/leave, list matches
+- Match router (`routers/match.py`) - get match, update scores
 
 ### Pending
-- Tournament router
-- Participant router
-- Match router
-- Frontend (not started)
+- List participants endpoint (`GET /api/tournaments/{id}/participants`)
+- Frontend (next priority)
+- Start tournament / bracket generation (later)
