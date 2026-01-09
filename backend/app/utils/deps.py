@@ -9,19 +9,21 @@ from app.utils.security import SECRET_KEY, ALGORITHM
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")
 
-def get_current_user(token: str = Depends(oauth2_scheme), 
-                     db: Session = Depends(get_db)) -> User:
+
+def get_current_user(
+    token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)
+) -> User:
     """
-    Dependency that extracts and validates the JWT token, 
+    Dependency that extracts and validates the JWT token,
     then returns the current user from the data base
     """
-    
-    # Creating a HTTPException variable that will be returned 
+
+    # Creating a HTTPException variable that will be returned
     # if anything doesn't pass credential check
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"}
+        headers={"WWW-Authenticate": "Bearer"},
     )
 
     try:
@@ -31,11 +33,10 @@ def get_current_user(token: str = Depends(oauth2_scheme),
             raise credentials_exception
     except JWTError:
         raise credentials_exception
-    
+
     user = db.query(User).filter(User.email == user_email).first()
 
     if user is None:
         raise credentials_exception
-    
-    return user
 
+    return user

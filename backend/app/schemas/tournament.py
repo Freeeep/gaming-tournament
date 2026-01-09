@@ -3,6 +3,7 @@ from datetime import datetime
 from typing import Optional
 from app.models.tournament import TournamentFormat, TournamentStatus
 
+
 class TournamentBase(BaseModel):
     name: str
     description: Optional[str] = None
@@ -10,9 +11,11 @@ class TournamentBase(BaseModel):
     format: TournamentFormat = TournamentFormat.SINGLE_ELIMINATION
     max_participants: int = 16
 
+
 class TournamentCreate(TournamentBase):
     registration_deadline: datetime
     start_date: datetime
+
 
 class TournamentUpdate(BaseModel):
     name: Optional[str] = None
@@ -24,6 +27,7 @@ class TournamentUpdate(BaseModel):
     registration_deadline: Optional[datetime] = None
     start_date: Optional[datetime] = None
 
+
 class TournamentResponse(TournamentBase):
     id: int
     status: TournamentStatus
@@ -31,6 +35,6 @@ class TournamentResponse(TournamentBase):
     registration_deadline: datetime
     start_date: datetime
     created_at: datetime
-        
+
     class Config:
         from_attributes = True

@@ -6,10 +6,8 @@ from app.models.user import User
 from app.schemas.user import UserResponse, UserUpdate, UserPrivateResponse
 from app.utils.deps import get_current_user
 
-router = APIRouter(
-    prefix="/users",
-    tags=["Users"]
-)
+router = APIRouter(prefix="/users", tags=["Users"])
+
 
 @router.get("/me", response_model=UserPrivateResponse)
 def get_current_user_profile(current_user: User = Depends(get_current_user)):
@@ -21,11 +19,12 @@ def get_current_user_profile(current_user: User = Depends(get_current_user)):
     """
     return current_user
 
+
 @router.put("/me", response_model=UserPrivateResponse)
 def update_current_user_profile(
     user_update: UserUpdate,
     current_user: User = Depends(get_current_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Update the currently authenticated user's profile.
@@ -46,9 +45,10 @@ def update_current_user_profile(
 
     # Save to database
     db.commit()
-    db.refresh(current_user) # Refresh to get any DB-generated values
+    db.refresh(current_user)  # Refresh to get any DB-generated values
 
     return current_user
+
 
 @router.get("/{user_id}", response_model=UserResponse)
 def get_user(user_id: int, db: Session = Depends(get_db)):
@@ -61,13 +61,7 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
 
     if db_user is None:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="User not found"
+            status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
         )
 
     return db_user
-    
-
-    
-
-        

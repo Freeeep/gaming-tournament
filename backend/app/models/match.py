@@ -6,10 +6,12 @@ import enum
 
 from app.core.database import Base
 
+
 class MatchStatus(enum.Enum):
     PENDING = "pending"
     IN_PROGRESS = "in_progress"
     COMPLETED = "completed"
+
 
 class Match(Base):
     __tablename__ = "matches"
@@ -32,4 +34,3 @@ class Match(Base):
     player1 = relationship("Participant", foreign_keys=[player1_id])
     player2 = relationship("Participant", foreign_keys=[player2_id])
     winner = relationship("Participant", foreign_keys=[winner_id])
-

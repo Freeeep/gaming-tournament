@@ -9,13 +9,15 @@ class UserCreate(BaseModel):
     email: EmailStr
     display_name: str
 
-#Schema for upadting a user
+
+# Schema for upadting a user
 class UserUpdate(BaseModel):
     display_name: Optional[str] = None
     avatar_url: Optional[str] = None
     bio: Optional[str] = None
 
-#Schema for returning a user (what the server sends back)
+
+# Schema for returning a user (what the server sends back)
 class UserResponse(BaseModel):
     id: int
     display_name: str
@@ -25,6 +27,7 @@ class UserResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
 
 class UserPrivateResponse(UserResponse):
     email: EmailStr

@@ -4,6 +4,7 @@ from typing import Optional
 
 from app.models.match import MatchStatus
 
+
 class MatchUpdate(BaseModel):
     status: Optional[MatchStatus] = None
     scheduled_at: Optional[datetime] = None
@@ -13,6 +14,7 @@ class MatchUpdate(BaseModel):
     player1_id: Optional[int] = None
     player2_id: Optional[int] = None
     winner_id: Optional[int] = None
+
 
 class MatchResponse(BaseModel):
     id: int

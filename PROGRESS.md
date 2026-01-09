@@ -1,5 +1,37 @@
 # Progress Log
 
+## 09/Jan/2026
+
+### Accomplished
+- Initialized React + TypeScript + Vite frontend project
+- Configured TailwindCSS for styling
+- Created API service layer:
+  - `src/services/api.ts` - Axios instance with JWT token interceptor
+  - `src/services/auth.ts` - Login and register API functions
+- Created pages:
+  - `src/pages/Home.tsx` - Landing page
+  - `src/pages/Login.tsx` - Login form connected to API with error/loading states
+  - `src/pages/Register.tsx` - Register form connected to API with error/loading states
+- Created components:
+  - `src/components/Navbar.tsx` - Top navigation bar (alternative layout)
+  - `src/components/Sidebar.tsx` - Fixed sidebar navigation (current layout)
+- Set up React Router in `App.tsx` for page navigation
+- Added CORS middleware to backend for frontend communication
+
+### Notes
+- React uses `useState` for form state management
+- `useNavigate` hook for programmatic navigation after login/register
+- async/await with try/catch/finally pattern for API calls
+- JWT token stored in localStorage and attached via Axios interceptor
+- CORS required for frontend (port 5173) to talk to backend (port 8000)
+
+### Tomorrow
+- Add auth context to track logged-in state across app
+- Create Tournaments list page
+- Add logout functionality
+
+---
+
 ## 07/Jan/2026
 
 ### Accomplished

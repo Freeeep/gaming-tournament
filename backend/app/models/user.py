@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 
 from app.core.database import Base
 
+
 class User(Base):
     __tablename__ = "users"
 
@@ -15,6 +16,6 @@ class User(Base):
     bio = Column(String, nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
-    #Relationships
+    # Relationships
     tournaments_organized = relationship("Tournament", back_populates="organizer")
     tournament_participations = relationship("Participant", back_populates="user")

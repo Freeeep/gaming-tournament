@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 
 from app.core.database import Base
 
+
 class Participant(Base):
     __tablename__ = "participants"
 

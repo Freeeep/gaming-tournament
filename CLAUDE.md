@@ -120,19 +120,30 @@ All endpoints prefixed with `/api/`:
 
 ## Implementation Status
 
-### Complete
+### Backend - Complete
 - Database configuration (`core/database.py`)
 - All SQLAlchemy models (`models/`)
 - All Pydantic schemas (`schemas/`)
 - Security utilities - password hashing, JWT creation (`utils/security.py`)
-- FastAPI entry point (`main.py`)
+- FastAPI entry point (`main.py`) with CORS middleware
 - Auth dependencies (`utils/deps.py`) - get_current_user, OAuth2 scheme
 - Auth router (`routers/auth.py`) - register, login (OAuth2 compatible)
 - User router (`routers/user.py`) - get/update profile, public profiles
 - Tournament router (`routers/tournament.py`) - CRUD, join/leave, list matches
 - Match router (`routers/match.py`) - get match, update scores
 
+### Frontend - In Progress
+- React + TypeScript + Vite project initialized
+- TailwindCSS configured
+- API service (`services/api.ts`) with JWT interceptor
+- Auth service (`services/auth.ts`) with login/register functions
+- Pages: Home, Login (connected), Register (connected)
+- Components: Navbar, Sidebar
+- React Router configured in App.tsx
+
 ### Pending
+- Auth context (track logged-in state)
+- Tournaments list page
+- Logout functionality
 - List participants endpoint (`GET /api/tournaments/{id}/participants`)
-- Frontend (next priority)
 - Start tournament / bracket generation (later)
